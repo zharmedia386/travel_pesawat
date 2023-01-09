@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:travel_pesawat/shared/theme.dart';
 import 'package:travel_pesawat/ui/widgets/seat_item.dart';
+import 'package:travel_pesawat/ui/widgets/custom_button.dart';
+import 'package:travel_pesawat/ui/pages/checkout_page.dart';
 
 class ChooseSeatPage extends StatelessWidget {
   const ChooseSeatPage({Key? key}) : super(key: key);
@@ -288,7 +290,71 @@ class ChooseSeatPage extends StatelessWidget {
                 SeatItem(status: 0),
               ],
             ),
+
+            // NOTE: YOUR SEAT
+            Container(
+              margin: EdgeInsets.only(top: 35),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Your seat',
+                    style: greyTextStyle.copyWith(
+                      fontWeight: light,
+                    ),
+                  ),
+                  Text(
+                    'A3, B3',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: medium,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // NOTE: TOTAL
+            Container(
+              margin: EdgeInsets.only(top: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Total',
+                    style: greyTextStyle.copyWith(
+                      fontWeight: light,
+                    ),
+                  ),
+                  Text(
+                    'IDR540.000.000',
+                    style: purpleTextStyle.copyWith(
+                      fontSize: 15,
+                      fontWeight: semibold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
+        ),
+      );
+    }
+
+    Widget checkoutButton() {
+      return CustomButton(
+        title: 'Continue to Checkout',
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CheckoutPage(),
+            ),
+          );
+        },
+        margin: EdgeInsets.only(
+          top: 30,
+          bottom: 46,
         ),
       );
     }
@@ -303,6 +369,7 @@ class ChooseSeatPage extends StatelessWidget {
           title(),
           seatStatus(),
           selectSeat(),
+          checkoutButton(),
         ],
       ),
     );

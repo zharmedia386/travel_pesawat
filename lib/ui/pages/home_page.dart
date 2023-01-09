@@ -25,7 +25,7 @@ class Homepage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Howdy,\nKezia Anne',
+                    'Hoswdy,\nKezia Anne',
                     style: blackTextStyle.copyWith(
                       fontWeight: semibold,
                       fontSize: 20,

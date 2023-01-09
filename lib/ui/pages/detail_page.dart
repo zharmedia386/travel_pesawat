@@ -210,7 +210,7 @@ class DetailPage extends StatelessWidget {
             // NOTE: PRICE & BOOK NAVIGATION
             Container(
               width: double.infinity,
-              margin: EdgeInsets.symmetric(vertical: 30),
+              margin: EdgeInsets.symmetric(vertical: 20),
               child: Row(
                 children: [
                   // NOTE: PRICE
