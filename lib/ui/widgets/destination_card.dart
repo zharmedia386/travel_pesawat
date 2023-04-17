@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:travel_pesawat/shared/theme.dart';
 import 'package:travel_pesawat/ui/pages/detail_page.dart';
+import 'package:travel_pesawat/models/destination_model.dart';
 
 class DestinationCard extends StatelessWidget {
-  final String name;
-  final String city;
-  final String imageUrl;
-  final double rating;
+  final DestinationModel destination;
 
-  const DestinationCard({
+  const DestinationCard(
+    this.destination, {
     Key? key,
-    required this.name,
-    required this.city,
-    required this.imageUrl,
-    this.rating = 0.0,
   }) : super(key: key);
 
   @override
@@ -23,29 +18,33 @@ class DestinationCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailPage(),
+            builder: (context) => DetailPage(destination),
           ),
         );
       },
       child: Container(
         width: 200,
         height: 323,
-        margin: EdgeInsets.only(left: defaultMargin, right: 15),
+        margin: EdgeInsets.only(
+          left: defaultMargin,
+        ),
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
           color: kWhiteColor,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: 180,
               height: 220,
+              margin: EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
-                  image: AssetImage(
-                    imageUrl,
+                  image: NetworkImage(
+                    destination.imageUrl,
                   ),
                 ),
               ),
@@ -67,6 +66,7 @@ class DestinationCard extends StatelessWidget {
                       Container(
                         width: 20,
                         height: 20,
+                        margin: EdgeInsets.only(right: 2),
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage(
@@ -75,11 +75,9 @@ class DestinationCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 2),
                       Text(
-                        rating.toString(),
+                        destination.rating.toString(),
                         style: blackTextStyle.copyWith(
-                          fontSize: 12,
                           fontWeight: medium,
                         ),
                       ),
@@ -89,24 +87,23 @@ class DestinationCard extends StatelessWidget {
               ),
             ),
             Container(
-              width: 180,
-              height: 83,
               margin: EdgeInsets.only(left: 10),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    destination.name,
                     style: blackTextStyle.copyWith(
-                      fontSize: 14,
+                      fontSize: 18,
                       fontWeight: medium,
                     ),
                   ),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Text(
-                    city,
-                    style: blackTextStyle.copyWith(
-                      fontSize: 12,
+                    destination.city,
+                    style: greyTextStyle.copyWith(
                       fontWeight: light,
                     ),
                   ),
